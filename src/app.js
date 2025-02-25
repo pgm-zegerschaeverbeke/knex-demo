@@ -11,7 +11,8 @@ import helpers from "./lib/TemplateHelpers.js";
 
 const app = express(); // create an instance of express
 app.use(express.static("public")); // serve static files from the public folder
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // ---------------------- EJS configuration ----------------------
 // EJS is a templating engine that allows you to embed JavaScript in your HTML.
 // It is used to generate HTML with plain JS, with templates that can
