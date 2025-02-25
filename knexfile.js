@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 const dbName = process.env.DATABASE_NAME || "database.sqlite3";
 
 const config = {

@@ -13,4 +13,5 @@ node_modules
 
 # Database
 knex-demo.sqlite3
+knex_demo.sqlite3
 database.sqlite3
