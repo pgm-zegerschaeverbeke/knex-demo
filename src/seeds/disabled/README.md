@@ -1,0 +1,1 @@
+place obsolete seeds in this folder

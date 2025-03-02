@@ -1,5 +1,5 @@
 const tableName = "TABLENAME";
-
+ 
 const seed = async function (knex) {
   // Deletes ALL existing entries
   await knex(tableName).truncate();
@@ -9,5 +9,5 @@ const seed = async function (knex) {
     { title: "School", slug: "school" },
   ]);
 };
-
+ 
 export { seed };

@@ -13,6 +13,7 @@ const app = express(); // create an instance of express
 app.use(express.static("public")); // serve static files from the public folder
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 // ---------------------- EJS configuration ----------------------
 // EJS is a templating engine that allows you to embed JavaScript in your HTML.
 // It is used to generate HTML with plain JS, with templates that can
@@ -28,14 +29,18 @@ Object.assign(app.locals, helpers); // make the helpers available to all views
 // These routes will return JSON data.
 
 // Interest API routes
-app.get("/api/interest", API_InterestController.index);
-app.get("/api/interest/:id", API_InterestController.show);
-app.post("/api/interest", API_InterestController.store);
-app.put("/api/interest", API_InterestController.update);
-app.delete("/api/interest/:id", API_InterestController.destroy);
+app.get("/api/interests", API_InterestController.index);
+app.get("/api/interests/:id", API_InterestController.show);
+app.post("/api/interests", API_InterestController.store);
+app.put("/api/interests/:id", API_InterestController.update);
+app.delete("/api/interests/:id", API_InterestController.destroy);
 
 // User API routes
-app.get("/api/user", API_UserController.index);
+app.get("/api/users", API_UserController.index);
+app.get("/api/users/:id", API_UserController.show);
+app.post("/api/users", API_UserController.store);
+app.put("/api/users/:id", API_UserController.update);
+app.delete("/api/users/:id", API_UserController.destroy);
 
 // Catch non-existing API routes
 app.use("/api/*", (req, res) => {
@@ -47,8 +52,10 @@ app.use("/api/*", (req, res) => {
 // These routes will return HTML data.
 
 app.get("/", PageController.home);
-app.get("/about-us", PageController.about);
-app.get("/contact", PageController.contact);
+// these routes are commented out because they are not needed anymore
+// app.get("/about-us", PageController.about);
+// app.get("/contact", PageController.contact);
+app.get("/:slug", PageController.page);
 
 // 404 page
 app.get("*", (req, res) => {

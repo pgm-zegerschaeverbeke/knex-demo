@@ -12,6 +12,6 @@ node_modules
 .env
 
 # Database
-knex-demo.sqlite3
 knex_demo.sqlite3
+knex-demo.sqlite3
 database.sqlite3

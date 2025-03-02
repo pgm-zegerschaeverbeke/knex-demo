@@ -6,7 +6,9 @@
   <ul>
     <% menuItems.forEach(function(item) { %>
       <li>
-        <a href="<%= item.url %>"><%= item.label %></a>
+        <a href="<%= item.url %>" target="<%= item.target %>">
+          <%= item.label %>
+        </a>
       </li>
     <% }); %>
   </ul>
