@@ -22,7 +22,7 @@ export const show = async (req, res, next) => {
  * Get all users
  */
 export const index = async (req, res, next) => {
-  const users = await User.query();
+  const users = await User.query().withGraphFetched('meta');
   return res.json(users);
 };
 
@@ -32,7 +32,7 @@ export const index = async (req, res, next) => {
 export const store = async (req, res, next) => {
   try {
     // validate incoming data (firstname, lastname, bio)
-    const { firstname, lastname, bio } = req.body;
+    const { firstname, lastname, bio, meta, pets, interests } = req.body;
 
     if (!firstname || !lastname || !bio) {
       return res
@@ -41,15 +41,18 @@ export const store = async (req, res, next) => {
     }
 
     // create a new user
-    const user = await User.query().insert({
+    const user = await User.query().insertGraph({
       firstname,
       lastname,
       bio,
+      meta,
+      pets,
+      interests
     });
 
     res.json({ message: "User created successfully.", user });
   } catch (e) {
-    res.status(500).json({ message: "Something went wrong." });
+    res.status(500).json({ message: "Something went wrong.", error: e.message });
   }
 };
 

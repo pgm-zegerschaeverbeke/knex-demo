@@ -1,8 +1,6 @@
 <main class="home">
   <h1><%= title %></h1>
-  <article class="content">
-    <%- content %>
-  </article>
+  <article class="content"><%- content %></article>
   <article class="user">
     <h2>About <%= userData?.firstname %> <%= userData?.lastname %></h2>
     <p><%= userData?.bio %></p>
@@ -11,6 +9,23 @@
       <% userData?.interests?.forEach(function(interest) { %>
         <li><%= interest.name %></li>
       <% }); %>
+    </ul>
+    <h3>Meta</h3>
+    <ul>
+      <li>Favorite quote: <%= userData?.meta?.quote %></li>
+      <li>Location: <%= userData?.meta?.location %></li>
+    </ul>
+    <h3>Pets</h3>
+    <ul>
+      <% userData?.pets?.forEach(pet => { %>
+        <li><%= pet.name %> is a <%= pet.species %></li>
+      <% }) %>
+    </ul>
+    <h3>Courses</h3>
+    <ul>
+      <% userData?.courses?.forEach(course => { %>
+        <li><%= course.name %> - <%= course.credits %> credits</li>
+      <% }) %>
     </ul>
   </article>
 </main>

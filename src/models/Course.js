@@ -7,7 +7,7 @@ Model.knex(knex);
 
 class Interest extends Model {
   static get tableName() {
-    return "interests";
+    return "courses";
   }
 
   static get idColumn() {
@@ -17,10 +17,11 @@ class Interest extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["name"],
+      required: ["name", "credits"],
       properties: {
         id: { type: "integer" },
         name: { type: "string", minLength: 1, maxLength: 255 },
+        credits: { type: "integer" }
       },
     };
   }
@@ -32,10 +33,10 @@ static get relationMappings() {
       relation: Model.ManyToManyRelation,
       modelClass: User,
       join: {
-        from: "interests.id",
+        from: "courses.id",
         through: {
-          from: "interest_user.interest_id",
-          to: "interest_user.user_id",
+          from: "course_user.course_id",
+          to: "course_user.user_id",
         },
         to: "users.id",
       },

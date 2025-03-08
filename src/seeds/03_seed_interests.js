@@ -4,12 +4,12 @@ const seed = async function (knex) {
   // Deletes ALL existing entries
   await knex(tableName).truncate();
   await knex(tableName).insert([
-    { name: "Lock picking" },
-    { name: "Geocaching" },
-    { name: "Competitive dog grooming" },
-    { name: "Duck herding" },
-    { name: "Extreme ironing" },
-    { name: "Soap carving" },
+    { id: 1, name: "Lock picking" },
+    { id: 2, name: "Geocaching" },
+    { id: 3, name: "Competitive dog grooming" },
+    { id: 4, name: "Duck herding" },
+    { id: 5, name: "Extreme ironing" },
+    { id: 6, name: "Soap carving" },
   ]);
 };
 
