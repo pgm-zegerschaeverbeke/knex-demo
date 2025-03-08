@@ -1,11 +1,10 @@
-const tableName = "navigation_items";
+const tableName = "interests";
 
 export function up(knex) {
   return knex.schema.createTable(tableName, function (table) {
     table.increments("id").primary();
-    table.string("label").notNullable();
-    table.string("target").defaultTo("_self");
-    table.string("url").notNullable();
+    table.string("name").notNullable().unique();
+    table.timestamps(true, true); // created_at and updated_at
   });
 }
 
